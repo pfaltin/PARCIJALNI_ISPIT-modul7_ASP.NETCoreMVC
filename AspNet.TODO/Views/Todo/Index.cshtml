@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AspNet.TODO.Models.Todo>
+
+@{
+    ViewData["Title"] = "Popis događaja";
+
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.When)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.When)
+                </td>
+                <td>
+                    @Html.ActionLink("Ažuriranje", "Edit", new { id = item.TodoID }) |
+                    @Html.ActionLink("Detalji", "Details", new { id = item.TodoID }) |
+                    @Html.ActionLink("Brisanje", "Delete", new { id = item.TodoID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
